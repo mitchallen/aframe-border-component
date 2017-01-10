@@ -56,7 +56,7 @@ module.exports = function (grunt) {
                     browserifyOptions: {
                         // dashes will be converted to caps in actual name 
                         // i.e.: -test-zeta becomes TestZeta
-                        standalone: 'MitchAllen.-aframe-border-component'
+                        // standalone: 'MitchAllen.-aframe-border-component'
                         // standalone: 'mitchallen.-aframe-border-component'
                     },
                     transform: [['babelify', {presets: ['es2015']}]],
@@ -66,7 +66,7 @@ module.exports = function (grunt) {
                    // if the source file has an extension of es6 then
                    // we change the name of the source file accordingly.
                    // The result file's extension is always .js
-                   "./dist/aframe-border-component.js": ["./modules/index.js"]
+                   "./dist/aframe-border-component.js": ["./browser.js"]
                    // For non-standalone, use ./browser.js instead.
                    // "./dist/aframe-border-component.js": ["./browser.js"]
                 }
@@ -83,7 +83,7 @@ module.exports = function (grunt) {
 
         watch: {
              scripts: {
-                files: ["./modules/*.js"],
+                files: ["./modules/*.js","./*.js"],
                 tasks: ["browserify",'uglify']
              }
         },

@@ -4,25 +4,90 @@
     <meta charset="utf-8">
     <title>aframe-border-component example</title>
     <meta name="description" content="aframe-border-component example">
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.2.0/dist/aframe-extras.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script> 
+
     <!-- either cdn should work once tagged and published -->
     <!--
-    <script src="https://cdn.rawgit.com/mitchallen/aframe-border-component/v0.1.0/dist/aframe-border-component.min.js"></script>
+    <script src="https://cdn.rawgit.com/aframe-border-component/v0.1.0/dist/aframe-border-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-border-component@0.1.0/dist/aframe-border-component.min.js"></script>
     -->
-    <script src="https://unpkg.com/@mitchallen/aframe-border-component@0.1.0/dist/aframe-border-component.min.js"></script>
-    <script>
-      /* Uncomment for standalone only.
-      // Substitute standalone name from Gruntfile.js (-test-zeta becomes TestZeta)
-      // Note that the 'window.'' prefix is not need by most if not all browsers
-      var factory = window.MitchAllen.(standalone-name();
-      console.log(factory);
-      // Add valid named parameters for create
-      var obj = factory.create( { } );
-      console.log(obj); 
-      */
-    </script>
+    <!-- 
+      <script src="../../dist/aframe-border-component.min.js"></script> 
+    -->
+    <script src="../../dist/aframe-border-component.js"></script>
   </head>
   <body>
-    <h1>aframe-border-component example</h1>
-    <p>See JavaScript developer console for output.</p>
+    <a-scene>
+     <a-assets>
+        <img id="texture-wall" src="img/arrow-left.png">
+        <img id="texture-wall-blue" src="img/arrow-left-blue.png">
+        <img id="texture-wall-red" src="img/arrow-left-red.png">
+        <a-box id="wall-one" 
+          static-body material="src: #texture-wall" 
+          depth="1" width="4" height="1"></a-box>
+        <a-box id="wall-one-long" 
+          static-body material="src: #texture-wall" 
+          depth="1" width="20" height="1"></a-box>
+        <a-box id="wall-one-blue" 
+          static-body material="src: #texture-wall-blue" 
+          depth="1" width="8" height="1"></a-box>
+        <a-box id="wall-one-red" 
+          static-body material="src: #texture-wall-red" 
+          depth="1" width="7" height="1"></a-box>
+        <a-cylinder id="end-cap"
+          static-body color="#444444" 
+          depth="1.1" width="1.1" height="2"
+          radius="0.5"></a-cylinder>
+      </a-assets>
+      <a-sky id="sky" color="#0000ff"></a-sky>
+      <a-box id="center" 
+          position="0 0 0"
+          color="red" 
+          depth="0.5" width="0.5" height="10"></a-box>
+      <a-entity id="player"
+          camera
+          universal-controls
+          kinematic-body
+          position="-20 20.8 20">
+      </a-entity>
+      <!-- birds-eye view box to stand on -->
+      <a-box static-body 
+          depth="0.25" height="0.5" width="0.5" 
+          position="-20 19.8 20"
+          color="tomato"></a-box>
+
+      <a-entity id="border1A" 
+          border='size: 4 5; wall: #wall-one; cap: #end-cap; open: S 0 N 1 2 4 E 5;' 
+          position='0 0.5 0'
+          rotation='0 0 0'></a-entity>
+
+      <a-entity id="border1B" 
+          border='size: 20 30; wall: #wall-one-long; cap: #end-cap; open: S 0 N 1 2 4 E 5;' 
+          position='0 0.5 0'
+          rotation='0 0 0'></a-entity>
+
+       <a-entity id="border2" 
+          border='size: 6 10; wall: #wall-one-blue; cap: #end-cap; open: S 0 N 1 2 4 E 5;' 
+          position='0 0.5 0'
+          rotation='0 0 0'></a-entity>
+
+       <a-entity id="border3" 
+          border='size: 10 15; wall: #wall-one-red; cap: #end-cap; open: S 0 N 1 2 4 E 5;' 
+          position='0 0.5 0'
+          rotation='0 0 0'></a-entity>
+
+      <a-grid id="ground" width="200" height="200" static-body color="#444444"></a-grid>
+    </a-scene>
+    <script>
+        // how to remove / add a border attribute through JavaScript
+        // document.getElementById("border1").removeAttribute("border");
+        // document.getElementById("border1").setAttribute(
+        //   "border","size: 4 5; wall: #wall-one-blue; cap: #end-cap; open: S 0 N 3;");
+    </script>
+    <!--
+      <script src="js/app.js"></script>
+    -->
   </body>
 </html>

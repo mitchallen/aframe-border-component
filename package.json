@@ -1,5 +1,5 @@
 {
-  "name": "@mitchallen/aframe-border-component",
+  "name": "aframe-border-component",
   "version": "0.1.0",
   "description": "",
   "main": "dist/aframe-border-component.js",
@@ -11,7 +11,8 @@
     "//": "To use: npm run test-nodemon (assumes global location of mocha)",
     "test-nodemon": "nodemon /usr/local/bin/mocha --timeout 5000",
     "test-debug": "nodemon /usr/local/bin/mocha -g '@DEBUG' --recursive --timeout 20000",
-    "test-jenkins": "grunt && /usr/local/bin/mocha --recursive --timeout 20000 -R xunit test/ > test-reports.xml"
+    "test-jenkins": "grunt && /usr/local/bin/mocha --recursive --timeout 20000 -R xunit test/ > test-reports.xml",
+    "web-server": "python -m SimpleHTTPServer $PORT || 8000"
   },
   "repository": {
     "type": "git",
@@ -20,10 +21,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mitchallen/aframe-border-component.git"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://gitlab.com/mitchallen/aframe-border-component.git"
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "ISC",

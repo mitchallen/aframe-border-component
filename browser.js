@@ -1,32 +1,34 @@
-
-// Browser distribution.
-
+// Browser distribution of the A-Frame component.
 (function () {
+  if (typeof AFRAME === 'undefined') {
+    console.error('Component attempted to register before AFRAME was available.');
+    return;
+  }
 
-  // This code will run when script is loaded in the browser
+  var border = require('./modules/index');
 
-  /**
-    * To use this file, in Gruntfile.js comment out browserify / ... / standalone:
+  // Register all components here.
+  var components = {
+    "border": border.Component
+  };
 
-         browserify: {
-               dist: {
-                options: {
-                    browserifyOptions: {
-                        // standalone: ...
+  var primitives = {
+  };
 
-    * Also in Gruntfile.js comment out:
+  Object.keys(components).forEach(function (name) {
+    if (AFRAME.aframeCore) {
+      AFRAME.aframeCore.registerComponent(name, components[name]);
+    } else {
+      AFRAME.registerComponent(name, components[name]);
+    }
+  });
 
-        // "./dist/PACKAGE_NAME.js": ["./modules/index.js"]
-
-    * and replace it with
-
-        "./dist/PACKAGE_NAME.js": ["./browser.js"]
-
-    */
-
-  var _package = require('./modules/index');
-
-  _package.create({});
-
+  Object.keys(primitives).forEach(function (name) {
+    if (AFRAME.aframeCore) {
+      AFRAME.aframeCore.registerPrimitive(name, primitives[name]);
+    } else {
+      AFRAME.registerPrimitive(name, primitives[name]);
+    }
+  });
 
 })();
