@@ -73,15 +73,18 @@ module.exports.Component = {
 
     schema: {
         enabled: { default: true },
-        size: {
-            type: 'vec2',
-            default: "5, 6"
+        sides: {
+            type: 'int',
+            default: 6
+        },
+        radius: {
+            type: 'int',
+            default: 10
         },
         open: {
             default: ""
         },
-        wall: { default: "" },
-        cap: { default: "" }
+        wall: { default: "" }
     },
 
     /** Called once when component is attached. Generally for initial setup.
@@ -89,8 +92,6 @@ module.exports.Component = {
      * @memberof module:aframe-border-component
      */
     init: function init() {
-
-        console.log("INITIALIZING: ...");
 
         this.borderData = {};
 
@@ -105,66 +106,32 @@ module.exports.Component = {
             this.borderData.wallHeight = 1;
         }
 
-        this.buildCapInfo();
+        this.borderData.openList = [];
 
-        // this.buildOpenSpec();
+        this.buildOpenList();
     },
 
-    buildCapInfo: function buildCapInfo() {
+    buildOpenList: function buildOpenList() {
+        // build open border list
 
-        // set cap info
-        var capInfo = this.data.cap.split(' ');
-        var capId = "";
-        var capAdjust = 0;
-        if (capInfo.length > 0) {
-            capId = capInfo[0];
-            capId = capId[0] == '#' ? capId.substring(1) : capId;
-            if (capInfo[1]) {
-                capAdjust = parseFloat(capInfo[1]);
+        var tokens = this.data.open.split(' ');
+        for (var key in tokens) {
+            var token = tokens[key];
+            var i = parseInt(token, 10);
+            if (!isNaN(i)) {
+                if (i >= 0) {
+                    this.borderData.openList[i] = true;
+                }
             }
         }
-
-        this.borderData.capId = capId;
-
-        this.borderData.capHeight = capAdjust;
     },
 
-    // buildOpenSpec: function() {
-    //     // build open border list
-    //     var openList = {
-    //         "N": [],
-    //         "E": [],
-    //         "W": [], 
-    //         "S": []
-    //     };
-    //     var tokens = this.data.open.split(' ');
-    //     var border = null;
-    //     for( var key in tokens ) {
-    //         var token = tokens[key];
-    //         if(["N","E","W","S"].indexOf(token) >= 0 ) {
-    //             border = token;
-    //         } else {
-    //             if(border) {
-    //                 openList[border].push(parseInt(token,10));
-    //             }
-    //         } 
-    //     }
-    //     this.borderData.openSpec = [];
-    //     for( var b in openList ) {
-    //         var lst = openList[b];
-    //         this.borderData.openSpec.push( { border: b, list: lst } );
-    //     }
-    // },
-
     drawBorderWall: function drawBorderWall(spec) {
-
-        console.log("drawBorderWall: ", spec);
 
         spec = spec || {};
         var position = spec.position,
             rotation = spec.rotation || { x: 0, y: 0, z: 0 },
-            cap = spec.cap || false,
-            wallId = cap ? this.borderData.capId : this.data.wall;
+            wallId = this.data.wall;
 
         wallId = wallId[0] == '#' ? wallId.substring(1) : wallId;
 
@@ -176,9 +143,6 @@ module.exports.Component = {
         var w = null;
         var p = document.getElementById(wallId);
         if (!p) {
-            if (cap) {
-                return true;
-            }
             w = document.createElement('a-box');
             this.el.appendChild(w);
             w.setAttribute('color', 'tomato');
@@ -200,52 +164,37 @@ module.exports.Component = {
         if (!this.data.enabled) {
             return;
         }
-        if (this.data.size) {
-            var xSize = this.data.size.x,
-                radius = this.data.size.y;
-            console.log("RADIUS: ", radius);
-            var options = {};
-            if (this.borderData.openSpec) {
-                options.open = this.borderData.openSpec;
-            }
-            var WALL_WIDTH = this.borderData.wallWidth,
-                WALL_DEPTH = this.borderData.wallDepth,
-                WALL_HEIGHT = this.borderData.wallHeight,
-                CELL_SIZE = WALL_WIDTH,
-                yPos = 0;
+        var sides = this.data.sides,
+            radius = this.data.radius;
 
-            // var xOffset = (xSize + 1) * WALL_WIDTH / 2.0;
-            // var yOffset = (ySize + 1) * WALL_WIDTH / 2.0;
+        var options = {};
+        if (this.borderData.openSpec) {
+            options.open = this.borderData.openSpec;
+        }
+        var WALL_WIDTH = this.borderData.wallWidth,
+            WALL_DEPTH = this.borderData.wallDepth,
+            WALL_HEIGHT = this.borderData.wallHeight,
+            CELL_SIZE = WALL_WIDTH,
+            yPos = 0;
 
-            var xRot = 0,
-                yRot = 0,
-                zRot = 0;
+        var xRot = 0,
+            yRot = 0,
+            zRot = 0;
 
-            var numElements = xSize,
-                angle = 0,
-                step = 2 * Math.PI / numElements,
-                rot = 360 / numElements;
-            for (var i = 0; i < numElements; i++) {
-                console.log("ANGLE:", angle);
-                var xPos = radius * Math.cos(angle);
-                var zPos = radius * Math.sin(angle);
-                angle += step;
+        var sises,
+            angle = 0,
+            step = 2 * Math.PI / sides,
+            rot = 360 / sides;
+        for (var i = 0; i < sides; i++, angle += step) {
 
-                yRot = 90 - i * rot;
+            var xPos = radius * Math.cos(angle);
+            var zPos = radius * Math.sin(angle);
 
-                // // draw end cap
-                // if(!this.drawBorderWall({
+            yRot = 90 - i * rot;
 
-                //     position: {
-                //         x: xPos + CELL_SIZE / 2.0,
-                //         // y: this.borderData.capHeight / 2.0,
-                //         y: this.borderData.capHeight,
-                //         z: zPos + CELL_SIZE / 2.0
-                //     },
-                //     cap: true
-                // })) {
-                //     return;
-                // }
+            // angle += step;
+
+            if (!this.borderData.openList[i]) {
 
                 if (!this.drawBorderWall({
                     position: {
