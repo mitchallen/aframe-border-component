@@ -59,15 +59,23 @@ module.exports.Component = {
   
         this.borderData = {};
 
-        var p = document.getElementById(this.data.wall);
+        var wallId = this.data.wall;
+            
+        wallId = wallId[0] == '#' ? wallId.substring(1) : wallId;
+
+        var p = document.getElementById(wallId);
         if(p) {
+            console.log("FOUND ELEMENT");
             this.borderData.wallWidth = p.getAttribute("width");
             this.borderData.wallDepth = p.getAttribute("depth");
             this.borderData.wallHeight = p.getAttribute("height");
+            this.borderData.wallRotation = p.getAttribute("rotation");
         } else {
+            console.log("NO ELEMENT FOUND!");
             this.borderData.wallWidth = 4;
             this.borderData.wallDepth = 1;
             this.borderData.wallHeight = 1;
+            this.borderData.wallRotation = { x: 0, y: 0, z: 0 };
         }
 
         this.borderData.openList = [];
@@ -139,23 +147,17 @@ module.exports.Component = {
             CELL_SIZE = WALL_WIDTH,
             yPos = 0;
 
+        console.log("WALL ROTATION:", this.borderData.wallRotation );
 
-        var xRot = 0,
-            yRot = 0,
-            zRot = 0;
+        var wallRotation = this.borderData.wallRotation;
 
         var sises,
-            angle = 0,
             step = (2*Math.PI) / sides,
-            rot = 360 / sides;
-        for(var i = 0; i < sides; i++, angle += step) {
+            turn = 360 / sides;
+        for(var i = 0, angle = 0; i < sides; i++, angle += step) {
 
             var xPos = radius * Math.cos(angle);
             var zPos = radius * Math.sin(angle);
-            
-            yRot = 90 - i * rot;
-
-            // angle += step;
 
             if( !this.borderData.openList[i] ) {
 
@@ -166,9 +168,9 @@ module.exports.Component = {
                         z: zPos
                     },
                     rotation: {
-                        x: xRot,
-                        y: yRot,
-                        z: zRot
+                        x: wallRotation.x,
+                        y: wallRotation.y + 90 - i * turn,
+                        z: wallRotation.z
                     }
                 })) {
                     return; 
