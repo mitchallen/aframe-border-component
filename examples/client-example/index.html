@@ -20,11 +20,14 @@
     <script src="../../dist/aframe-border-component.js"></script>
   </head>
   <body>
-    <a-scene stats-in-vr>
+    <a-scene stats-in-vr physics="debug: true;">
      <a-assets>
         <img id="texture-wall" src="img/arrow-left.png">
         <img id="texture-wall-blue" src="img/arrow-left-blue.png">
         <img id="texture-wall-red" src="img/arrow-left-red.png">
+        <a-box id="rail" 
+          static-body color="red" 
+          depth="1" width="100" height="1"></a-box>
         <a-box id="wall-one" 
           static-body material="src: #texture-wall" 
           depth="1" width="4" height="1"></a-box>
@@ -42,25 +45,25 @@
           static-body material="src: #texture-wall-red" 
           depth="1" width="7" height="1"></a-box>
         <a-cylinder id="round-wall-blue"
-          static-body material="src: #texture-wall-blue" 
+          material="src: #texture-wall-blue" 
           depth="1.1" width="1.1" height="2"
           radius="0.5"></a-cylinder>
         <a-cylinder id="round-wall-red"
-          static-body material="src: #texture-wall-red" 
+          material="src: #texture-wall-red" 
           depth="1.1" width="1.1" height="2"
           radius="0.5"></a-cylinder>
         <a-cylinder id="round-wall-green-ring"
           rotation="0 0 90"
-          static-body material="src: #texture-wall" 
+          material="src: #texture-wall" 
           depth="1.1" width="1.1" height="2"
           radius="0.5"></a-cylinder>
         <a-cylinder id="round-wall-green-spoke"
           rotation="90 0 0"
-          static-body material="src: #texture-wall" 
+          material="src: #texture-wall" 
           depth="1.1" width="1.1" height="2"
           radius="0.5"></a-cylinder>
         <a-cylinder id="round-wall-green"
-          static-body material="src: #texture-wall" 
+          material="src: #texture-wall" 
           depth="1.1" width="1.1" height="2"
           radius="0.5"></a-cylinder>
       </a-assets>
@@ -81,6 +84,11 @@
           position="-20 19.8 20"
           color="tomato"></a-box>
 
+      <a-entity id="arena" 
+          border='sides: 4; radius: 25; wall: #rail;' 
+          position='0 0.5 0'
+          rotation='0 0 0'></a-entity>
+
       <a-entity id="border1A" 
           border='sides: 3; radius: 5; wall: #wall-one;' 
           position='0 0.5 0'
@@ -90,16 +98,6 @@
           position='0 0.5 0'
           rotation='0 0 0'></a-entity>
 
-      <a-entity id="border2A" 
-          border='sides: 20; radius: 30; wall: #wall-one-long;' 
-          position='0 0.5 0'
-          rotation='0 0 0'></a-entity>
-
-      <a-entity id="border2B" 
-          border='sides: 20; radius: 30; wall: #wall-one-long;' 
-          position='0 0.5 0'
-          rotation='0 0 90'></a-entity>
-
       <a-entity id="border2C" 
           border='sides: 10; radius: 15; wall: #wall-one-blue; open: 0 5;' 
           position='0 0.5 0'
@@ -107,36 +105,36 @@
 
       <a-entity id="borderRound1A" 
           border='sides: 20; radius: 4; wall: #round-wall-red;' 
-          position='22 2.5 0'
+          position='10 2.5 0'
           rotation='0 90 90'></a-entity>
 
     <a-entity id="borderRound1B" 
           border='sides: 20; radius: 4; wall: #round-wall-green-ring;' 
-          position='22 2.5 0'
+          position='10 2.5 0'
           rotation='0 90 90'></a-entity>
 
       <a-entity id="borderRound2A" 
           border='sides: 20; radius: 4; wall: #round-wall-blue;' 
-          position='-22 2.5 0'
+          position='-10 2.5 0'
           rotation='0 90 90'></a-entity>
 
       <a-entity id="borderRound2B" 
           border='sides: 20; radius: 4; wall: #round-wall-green-spoke;' 
-          position='-22 2.5 0'
+          position='-10 2.5 0'
           rotation='0 90 90'></a-entity>
 
       <a-entity id="borderRound3" 
           border='sides: 20; radius: 4; wall: #round-wall-green;' 
-          position='0 2.5 -22'
+          position='0 2.5 -10'
           rotation='0 0 90'></a-entity>
 
       <a-entity id="borderRound4" 
           border='sides: 20; radius: 4; wall: #round-wall-green-ring;' 
-          position='0 2.5 22'
+          position='0 2.5 10'
           rotation='0 0 90'></a-entity>
 
 
-      <a-grid id="ground" width="200" height="200" static-body color="#444444"></a-grid>
+      <a-grid id="ground" width="50" height="50" static-body color="#444444"></a-grid>
     </a-scene>
   </body>
 </html>
