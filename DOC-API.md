@@ -1,14 +1,3 @@
-## Modules
-
-<dl>
-<dt><a href="#module_aframe-border-component">aframe-border-component</a></dt>
-<dd><p>Module</p>
-</dd>
-<dt><a href="#module_aframe-border-component-factory">aframe-border-component-factory</a></dt>
-<dd><p>Factory module</p>
-</dd>
-</dl>
-
 <a name="module_aframe-border-component"></a>
 
 ## aframe-border-component
@@ -16,44 +5,35 @@ Module
 
 
 * [aframe-border-component](#module_aframe-border-component)
-    * [.package()](#module_aframe-border-component+package)
-    * [.health()](#module_aframe-border-component+health)
+    * [.schema](#module_aframe-border-component.schema)
+    * [.Component()](#module_aframe-border-component.Component)
+    * [.init()](#module_aframe-border-component.init)
 
-<a name="module_aframe-border-component+package"></a>
+<a name="module_aframe-border-component.schema"></a>
 
-### aframe-border-component.package()
-Returns the package name
+### aframe-border-component.schema
+defines the attribute properties
 
-**Kind**: instance method of <code>[aframe-border-component](#module_aframe-border-component)</code>  
-<a name="module_aframe-border-component+health"></a>
+**Kind**: static property of <code>[aframe-border-component](#module_aframe-border-component)</code>  
+**Object**:   
+<a name="module_aframe-border-component.Component"></a>
 
-### aframe-border-component.health()
-Health check
+### aframe-border-component.Component()
+Specification for registering a border component with Aframe
 
-**Kind**: instance method of <code>[aframe-border-component](#module_aframe-border-component)</code>  
-**Example** *(Health check)*  
+**Kind**: static method of <code>[aframe-border-component](#module_aframe-border-component)</code>  
+**Example** *(browserify example)*  
 ```js
-obj.health.should.eql("OK");
+var border = require('aframe-border-component');
+if (AFRAME.aframeCore) {
+   AFRAME.aframeCore.registerComponent("border, border.Component);
+} else {
+   AFRAME.registerComponent("border, border.Component);
+}
 ```
-<a name="module_aframe-border-component-factory"></a>
+<a name="module_aframe-border-component.init"></a>
 
-## aframe-border-component-factory
-Factory module
+### aframe-border-component.init()
+Called once when component is attached. Generally for initial setup.
 
-<a name="module_aframe-border-component-factory.create"></a>
-
-### aframe-border-component-factory.create(options) ⇒ <code>[aframe-border-component](#module_aframe-border-component)</code>
-Factory method 
-It takes one spec parameter that must be an object with named parameters
-
-**Kind**: static method of <code>[aframe-border-component-factory](#module_aframe-border-component-factory)</code>  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>Object</code> | Named parameters object |
-
-**Example** *(Usage example)*  
-```js
-var factory = require("@mitchallen/aframe-border-component");
-var obj = factory.create({});
-```
+**Kind**: static method of <code>[aframe-border-component](#module_aframe-border-component)</code>  
