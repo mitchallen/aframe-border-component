@@ -26,9 +26,9 @@ Specification for registering a border component with Aframe
 ```js
 var border = require('aframe-border-component');
 if (AFRAME.aframeCore) {
-   AFRAME.aframeCore.registerComponent("border, border.Component);
+   AFRAME.aframeCore.registerComponent("border", border.Component"\);
 } else {
-   AFRAME.registerComponent("border, border.Component);
+   AFRAME.registerComponent("border", border.Component);
 }
 ```
 <a name="module_aframe-border-component.init"></a>
