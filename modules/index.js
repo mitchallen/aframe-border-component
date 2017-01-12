@@ -21,7 +21,7 @@
  * @example <caption>browserify example</caption>
  * var border = require('aframe-border-component');
  * if (AFRAME.aframeCore) {
- *    AFRAME.aframeCore.registerComponent("border", border.Component"\);
+ *    AFRAME.aframeCore.registerComponent("border", border.Component);
  * } else {
  *    AFRAME.registerComponent("border", border.Component);
  * }
