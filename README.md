@@ -1,4 +1,4 @@
-@mitchallen/aframe-border-component
+aframe-border-component
 ==
 A component for creating borders in VR
 --
@@ -36,11 +36,11 @@ Run this example in a browser (you'll need to add your own image files or get th
         <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.2.0/dist/aframe-extras.min.js"></script>
         <script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script> 
         <script src="https://rawgit.com/chenzlabs/stats-in-vr/master/dist/aframe-stats-in-vr-component.min.js"></script> 
-        <script src="../../dist/aframe-border-component.min.js"></script>   
-    </head>
-    <body>
-    <a-scene stats-in-vr physics="debug: true;">
-     <a-assets>
+        <script src="https://unpkg.com/aframe-border-component@0.1.0/dist/aframe-border-component.min.js"></script>   
+      </head>
+      <body>
+      <a-scene stats-in-vr physics="debug: true;">
+      <a-assets>
         <img id="texture-wall" src="img/arrow-left.png">
         <img id="texture-wall-blue" src="img/arrow-left-blue.png">
         <img id="texture-wall-red" src="img/arrow-left-red.png">
@@ -102,7 +102,6 @@ Run this example in a browser (you'll need to add your own image files or get th
           border='sides: 10; radius: 15; wall: #wall-one-blue; open: 0 5;' 
           position='0 0.5 0'
           rotation='0 0 0'></a-entity>
-
 
       <a-grid id="ground" width="50" height="50" static-body color="#444444"></a-grid>
 
@@ -176,7 +175,70 @@ An example of how to remove and add border attributes though JavaScript. The tar
 You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 
     $ npm init
-    $ npm install @mitchallen/aframe-border-component --save
+    $ npm install aframe-border-component --save
+
+### Browserify Example
+
+Below is an example of requiring the module within a file to be passed to browserify.
+
+The modules named export, __Component__, should be passed to __AFRAME.aframeCore.registerComponent__:
+
+    // Browser distribution of the A-Frame component.
+    (function () {
+      if (typeof AFRAME === 'undefined') {
+        console.error('Component attempted to register before AFRAME was available.');
+        return;
+      }
+
+      var border = require('aframe-border-component');
+
+      // Register all components here.
+      var components = {
+        "border": border.Component
+      };
+
+      var primitives = {
+      };
+
+      Object.keys(components).forEach(function (name) {
+        if (AFRAME.aframeCore) {
+          AFRAME.aframeCore.registerComponent(name, components[name]);
+        } else {
+          AFRAME.registerComponent(name, components[name]);
+        }
+      });
+
+      Object.keys(primitives).forEach(function (name) {
+        if (AFRAME.aframeCore) {
+          AFRAME.aframeCore.registerPrimitive(name, primitives[name]);
+        } else {
+          AFRAME.registerPrimitive(name, primitives[name]);
+        }
+      });
+
+    })();
+    
+### Build with grunt
+
+Use a [grunt](http://gruntjs.com/) task to build the distribution file:
+
+    browserify: {
+        dist: {
+            options: {
+                browserifyOptions: {
+                    // ...
+                },
+                transform: [['babelify', {presets: ['es2015']}]],
+                    plugin: [[ "browserify-derequire" ]]
+                },
+            files: {
+               // substitute your component name for the distribution file
+               "./dist/YOUR-COMPONENT.js": ["./browser.js"]
+            }
+        }
+    },
+    
+For more information, review the __Gruntfile.js__ and __package.json__ files in the root of this projects source code.
   
 * * *
 
@@ -192,7 +254,6 @@ To test, go to the root folder and type (sans __$__):
 
 * [bitbucket.org/mitchallen/aframe-border-component.git](https://bitbucket.org/mitchallen/aframe-border-component.git)
 * [github.com/mitchallen/aframe-border-component.git](https://github.com/mitchallen/aframe-border-component.git)
-* [gitlab.com/mitchallen/aframe-border-component](https://gitlab.com/mitchallen/aframe-border-component) (append __.git__ to clone)
 
 * * *
 
@@ -204,6 +265,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.2 
+
+* fixed / updated documentation
 
 #### Version 0.1.1 
 
