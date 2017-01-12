@@ -3,6 +3,8 @@
 A component for creating borders in VR
 --
 
+<img src="https://cdn.rawgit.com/mitchallen/aframe-border-component/51697bb/examples/gif/border-demo.png" width="500" />
+
 ## Browser Usage 
 
 ### Live Example 
