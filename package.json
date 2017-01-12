@@ -1,7 +1,7 @@
 {
   "name": "aframe-border-component",
   "version": "0.1.0",
-  "description": "",
+  "description": "A component for creating borders in VR",
   "main": "dist/aframe-border-component.js",
   "scripts": {
     "//": "To use: npm start (useful if not a module)",

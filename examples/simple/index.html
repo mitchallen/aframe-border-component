@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>aframe-border-component example</title>
+    <title>simple aframe-border-component example</title>
     <meta name="description" content="aframe-border-component example">
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.2.0/dist/aframe-extras.min.js"></script>
@@ -25,23 +25,12 @@
         <img id="texture-wall" src="img/arrow-left.png">
         <img id="texture-wall-blue" src="img/arrow-left-blue.png">
         <img id="texture-wall-red" src="img/arrow-left-red.png">
-        <a-plane id="plane-one" 
-          rotation="0 180 0"
-          color="red" height="5" 
-          width="10"></a-plane>
-        <a-plane id="plane-two" 
-          rotation="0 0 0"
-          color="green" height="5" 
-          width="10"></a-plane>
         <a-box id="rail" 
           static-body color="red" 
           depth="1" width="100" height="1"></a-box>
         <a-box id="wall-one" 
           static-body material="src: #texture-wall" 
           depth="1" width="4" height="1"></a-box>
-        <a-sphere id="ball-one-red" 
-          static-body material="src: #texture-wall-red" 
-          radius="1"></a-sphere>
         <a-box id="wall-one-spoke" 
           static-body material="src: #texture-wall" 
           rotation="0 90 0"
@@ -55,28 +44,6 @@
         <a-box id="wall-one-red" 
           static-body material="src: #texture-wall-red" 
           depth="1" width="7" height="1"></a-box>
-        <a-cylinder id="round-wall-blue"
-          material="src: #texture-wall-blue" 
-          depth="1.1" width="1.1" height="2"
-          radius="0.5"></a-cylinder>
-        <a-cylinder id="round-wall-red"
-          material="src: #texture-wall-red" 
-          depth="1.1" width="1.1" height="2"
-          radius="0.5"></a-cylinder>
-        <a-cylinder id="round-wall-green-ring"
-          rotation="0 0 90"
-          material="src: #texture-wall" 
-          depth="1.1" width="1.1" height="2"
-          radius="0.5"></a-cylinder>
-        <a-cylinder id="round-wall-green-spoke"
-          rotation="90 0 0"
-          material="src: #texture-wall" 
-          depth="1.1" width="1.1" height="2"
-          radius="0.5"></a-cylinder>
-        <a-cylinder id="round-wall-green"
-          material="src: #texture-wall" 
-          depth="1.1" width="1.1" height="2"
-          radius="0.5"></a-cylinder>
       </a-assets>
       <a-sky id="sky" color="#0000ff"></a-sky>
       <a-box id="center" 
@@ -111,25 +78,12 @@
           position='0 0.5 0'
           rotation='0 0 0'></a-entity>
 
-      <!-- sphere ring -->
-      <a-entity id="border2C" 
-          border='sides: 10; radius: 10; wall: #ball-one-red;' 
-          position='0 0.5 0'
-          rotation='0 0 0'></a-entity>
-
       <!-- blue ring -->
       <a-entity id="border2C" 
           border='sides: 10; radius: 15; wall: #wall-one-blue; open: 0 5;' 
           position='0 0.5 0'
           rotation='0 0 0'></a-entity>
 
-      <!-- stargate -->
-      
-      <a-entity id="borderRound1B" 
-          border='sides: 20; radius: 4; wall: #round-wall-green-ring;' 
-          position='15 2.5 0'
-          rotation='0 0 90'></a-entity>
-    
 
       <a-grid id="ground" width="50" height="50" static-body color="#444444"></a-grid>
 
