@@ -172,8 +172,6 @@ An example of how to remove and add border attributes though JavaScript. The tar
 
 ## NPM Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
-
     $ npm init
     $ npm install aframe-border-component --save
 
