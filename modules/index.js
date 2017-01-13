@@ -65,13 +65,11 @@ module.exports.Component = {
 
         var p = document.getElementById(wallId);
         if(p) {
-            console.log("FOUND ELEMENT");
             this.borderData.wallWidth = p.getAttribute("width");
             this.borderData.wallDepth = p.getAttribute("depth");
             this.borderData.wallHeight = p.getAttribute("height");
             this.borderData.wallRotation = p.getAttribute("rotation");
         } else {
-            console.log("NO ELEMENT FOUND!");
             this.borderData.wallWidth = 4;
             this.borderData.wallDepth = 1;
             this.borderData.wallHeight = 1;
@@ -144,15 +142,11 @@ module.exports.Component = {
         var WALL_WIDTH = this.borderData.wallWidth,
             WALL_DEPTH = this.borderData.wallDepth,
             WALL_HEIGHT = this.borderData.wallHeight,
-            CELL_SIZE = WALL_WIDTH,
             yPos = 0;
-
-        console.log("WALL ROTATION:", this.borderData.wallRotation );
 
         var wallRotation = this.borderData.wallRotation;
 
-        var sises,
-            step = (2*Math.PI) / sides,
+        var step = (2*Math.PI) / sides,
             turn = 360 / sides;
         for(var i = 0, angle = 0; i < sides; i++, angle += step) {
 

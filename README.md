@@ -3,8 +3,11 @@ aframe-border-component
 A component for creating borders in VR
 --
 
+<p align="left">
 <img src="https://cdn.rawgit.com/mitchallen/aframe-border-component/51697bb/examples/gif/border-demo.png" width="500" />
+</p>
 
+<p align="left">
 <a href="https://npmjs.org/package/aframe-border-component">
     <img src="http://img.shields.io/npm/dt/aframe-border-component.svg?style=flat-square" alt="Downloads">
 </a>
@@ -14,6 +17,7 @@ A component for creating borders in VR
 <a href="https://npmjs.com/package/aframe-border-component">
     <img src="https://img.shields.io/npm/l/aframe-border-component.svg?style=flat-square" alt="License"></a>
 </a>
+</p>
 
 ## Browser Usage 
 
@@ -46,7 +50,7 @@ Run this example in a browser (you'll need to add your own image files or get th
         <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.2.0/dist/aframe-extras.min.js"></script>
         <script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script> 
         <script src="https://rawgit.com/chenzlabs/stats-in-vr/master/dist/aframe-stats-in-vr-component.min.js"></script> 
-        <script src="https://unpkg.com/aframe-border-component@0.1.0/dist/aframe-border-component.min.js"></script>   
+        <script src="https://unpkg.com/aframe-border-component@0.1.3/dist/aframe-border-component.min.js"></script>   
       </head>
       <body>
       <a-scene stats-in-vr physics="debug: true;">
@@ -124,7 +128,7 @@ Run this example in a browser (you'll need to add your own image files or get th
 
 Include the latest script. Update the @version in the URL as needed:
 
-    <script src="https://unpkg.com/aframe-border-component@0.1.0/dist/aframe-border-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-border-component@0.1.3/dist/aframe-border-component.min.js"></script>
     
 ### Define Assets
 
@@ -273,6 +277,12 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.3
+
+* code cleanup 
+* added MIT license
+* updated examples to latest CDN
 
 #### Version 0.1.2 
 

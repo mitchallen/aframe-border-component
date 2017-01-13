@@ -23,7 +23,7 @@
     "url": "https://github.com/mitchallen/aframe-border-component.git"
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
   },
   "devDependencies": {
