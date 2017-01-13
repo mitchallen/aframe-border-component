@@ -5,6 +5,16 @@ A component for creating borders in VR
 
 <img src="https://cdn.rawgit.com/mitchallen/aframe-border-component/51697bb/examples/gif/border-demo.png" width="500" />
 
+<a href="https://npmjs.org/package/aframe-border-component">
+    <img src="http://img.shields.io/npm/dt/aframe-border-component.svg?style=flat-square" alt="Downloads">
+</a>
+<a href="https://npmjs.org/package/aframe-border-component">
+    <img src="http://img.shields.io/npm/v/aframe-border-component.svg?style=flat-square" alt="Version">
+</a>
+<a href="https://npmjs.com/package/aframe-border-component">
+    <img src="https://img.shields.io/npm/l/aframe-border-component.svg?style=flat-square" alt="License"></a>
+</a>
+
 ## Browser Usage 
 
 ### Live Example 
