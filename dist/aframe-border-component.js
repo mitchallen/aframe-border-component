@@ -10,6 +10,8 @@
 
   var border = _dereq_('./modules/index');
 
+  console.log(border.Component.name() + ": " + border.Component.version());
+
   // Register all components here.
   var components = {
     "border": border.Component
@@ -50,6 +52,9 @@
  * @module aframe-border-component
  */
 
+var packageName = _dereq_("../upcoming-info").name,
+    packageVersion = _dereq_("../upcoming-info").upcoming.version;
+
 /** 
 * Specification for registering a border component with Aframe
 * @function
@@ -61,8 +66,14 @@
 *    AFRAME.registerComponent("border", border.Component);
 * }
 */
-
 module.exports.Component = {
+
+    version: function version() {
+        return packageVersion;
+    },
+    name: function name() {
+        return packageName;
+    },
 
     dependencies: ['position', 'rotation'],
 
@@ -214,4 +225,6 @@ module.exports.Component = {
     remove: function remove() {}
 };
 
+},{"../upcoming-info":3}],3:[function(_dereq_,module,exports){
+module.exports={"name":"aframe-border-component","version":"0.1.3","upcoming":{"release":"patch","version":"0.1.4"}}
 },{}]},{},[1]);

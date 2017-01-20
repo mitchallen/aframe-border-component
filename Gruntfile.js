@@ -93,27 +93,22 @@ module.exports = function (grunt) {
                 src: 'modules/*.js',
                 dest: 'DOC-API.md'
               }
-              // separateOutputFilePerInput: {
-              //   files: [
-              //     { src: 'src/jacket.js', dest: 'api/jacket.md' },
-              //     { src: 'src/shirt.js', dest: 'api/shirt.md' }
-              //   ]
-              // },
-              // withOptions: {
-              //   options: {
-              //     'no-gfm': true
-              //   },
-              //   src: 'src/wardrobe.js',
-              //   dest: 'api/with-index.md'
-              // }
+        },
+
+        upcoming: {
+            default: {
+                files: [
+                    { src: 'package.json', dest: ['upcoming-info.json'] }
+                ]
+            }
         }
 
     });
 
-    grunt.registerTask('default', ['build']);
-    grunt.registerTask('monitor', ['jshint','watch']);
-    grunt.registerTask('build-doc', ['jsdoc2md']);
-    grunt.registerTask("build", ['jshint','build-doc','browserify','uglify']);
+    grunt.loadNpmTasks('grunt-upcoming');
+
+    grunt.registerTask('default', ['upcoming:patch','build']);
+    grunt.registerTask("build",   ['jshint','browserify','uglify']);
     grunt.registerTask('pubinit', ['build','shell:pubinit']);
-    grunt.registerTask('publish', ['build','bump','shell:publish']);
+    grunt.registerTask('publish', ['upcoming:patch','build','bump','shell:publish']);
 };

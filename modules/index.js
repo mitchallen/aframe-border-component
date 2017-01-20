@@ -14,6 +14,8 @@
  * @module aframe-border-component
  */
 
+var packageName = require("../upcoming-info").name,
+    packageVersion = require("../upcoming-info").upcoming.version;
 
  /** 
  * Specification for registering a border component with Aframe
@@ -27,6 +29,9 @@
  * }
  */
 module.exports.Component = {
+
+    version: function() { return packageVersion; },
+    name: function() { return packageName; },
 
     dependencies: ['position', 'rotation'],
 

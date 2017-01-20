@@ -7,6 +7,8 @@
 
   var border = require('./modules/index');
 
+  console.log( border.Component.name() + ": " + border.Component.version() );
+
   // Register all components here.
   var components = {
     "border": border.Component
