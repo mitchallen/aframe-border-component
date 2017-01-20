@@ -8,6 +8,12 @@ A component for creating borders in VR
 </p>
 
 <p align="left">
+  <a href="https://travis-ci.org/mitchallen/aframe-border-component">
+    <img src="https://img.shields.io/travis/mitchallen/aframe-border-component.svg?style=flat-square" alt="CI">
+  </a>
+  <a href="https://codecov.io/gh/mitchallen/aframe-border-component">
+    <img src="https://codecov.io/gh/mitchallen/aframe-border-component/branch/master/graph/badge.svg" alt="Coverage">
+  </a>
 <a href="https://npmjs.org/package/aframe-border-component">
     <img src="http://img.shields.io/npm/dt/aframe-border-component.svg?style=flat-square" alt="Downloads">
 </a>
@@ -277,6 +283,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.4
+
+* added logging of name and version to console
+* integrated travis-ci and codecov
 
 #### Version 0.1.3
 

@@ -7,6 +7,7 @@
     "//": "To use: npm run test-nodemon (assumes global location of mocha)",
     "start": "node dist/aframe-border-component.js",
     "test": "grunt && /usr/local/bin/mocha --recursive --timeout 20000",
+    "test-coverage": "./node_modules/.bin/istanbul cover _mocha --recursive test/**/*",
     "test-nodemon": "nodemon /usr/local/bin/mocha --timeout 5000",
     "test-debug": "nodemon /usr/local/bin/mocha -g '@DEBUG' --recursive --timeout 20000",
     "test-jenkins": "grunt && /usr/local/bin/mocha --recursive --timeout 20000 -R xunit test/ > test-reports.xml",
@@ -32,6 +33,8 @@
     "grunt-jsdoc-to-markdown": "^2.0.0",
     "grunt-shell": "^1.3.0",
     "grunt-upcoming": "^0.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
     "should": "^10.0.0",
     "supertest": "^2.0.0"
   }
