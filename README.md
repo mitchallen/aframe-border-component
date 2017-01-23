@@ -284,6 +284,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.1.5
+
+* brought code coverage up to 100%
+
 #### Version 0.1.4
 
 * added logging of name and version to console

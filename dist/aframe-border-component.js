@@ -146,16 +146,11 @@ module.exports.Component = {
     drawBorderWall: function drawBorderWall(spec) {
 
         spec = spec || {};
-        var position = spec.position,
+        var position = spec.position || { x: 0, y: 0, z: 0 },
             rotation = spec.rotation || { x: 0, y: 0, z: 0 },
             wallId = this.data.wall;
 
         wallId = wallId[0] == '#' ? wallId.substring(1) : wallId;
-
-        if (!position) {
-            console.error("drawBorderWall requires position");
-            return false;
-        }
 
         var w = null;
         var p = document.getElementById(wallId);
@@ -226,5 +221,5 @@ module.exports.Component = {
 };
 
 },{"../upcoming-info":3}],3:[function(_dereq_,module,exports){
-module.exports={"name":"aframe-border-component","version":"0.1.3","upcoming":{"release":"patch","version":"0.1.4"}}
+module.exports={"name":"aframe-border-component","version":"0.1.4","upcoming":{"release":"patch","version":"0.1.5"}}
 },{}]},{},[1]);

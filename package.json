@@ -2,7 +2,7 @@
   "name": "aframe-border-component",
   "version": "0.1.4",
   "description": "A component for creating borders in VR",
-  "main": "dist/aframe-border-component.js",
+  "main": "modules/index.js",
   "scripts": {
     "//": "To use: npm run test-nodemon (assumes global location of mocha)",
     "start": "node dist/aframe-border-component.js",
@@ -35,6 +35,7 @@
     "grunt-upcoming": "^0.2.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
+    "mockbot-document": "^0.1.14",
     "should": "^10.0.0",
     "supertest": "^2.0.0"
   }

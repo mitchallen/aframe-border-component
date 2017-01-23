@@ -104,16 +104,11 @@ module.exports.Component = {
     drawBorderWall: function(spec) {
 
         spec = spec || {};
-        var position = spec.position,
+        var position = spec.position || { x: 0, y: 0, z: 0 },
             rotation = spec.rotation || { x: 0, y: 0, z: 0 },
             wallId = this.data.wall;
 
         wallId = wallId[0] == '#' ? wallId.substring(1) : wallId;
- 
-        if(!position) {
-            console.error("drawBorderWall requires position");
-            return false;
-        }
 
         var w = null;
         var p = document.getElementById(wallId);
@@ -131,8 +126,6 @@ module.exports.Component = {
         }
         w.setAttribute('rotation', rotation);
         w.setAttribute('position', position);
-
-        return true;
     },
 
     update: function () {
@@ -140,10 +133,6 @@ module.exports.Component = {
         var sides = this.data.sides,
             radius = this.data.radius;
 
-        var options = {};
-        if( this.borderData.openSpec ) {
-            options.open = this.borderData.openSpec;
-        }
         var WALL_WIDTH = this.borderData.wallWidth,
             WALL_DEPTH = this.borderData.wallDepth,
             WALL_HEIGHT = this.borderData.wallHeight,
@@ -160,7 +149,7 @@ module.exports.Component = {
 
             if( !this.borderData.openList[i] ) {
 
-                if(!this.drawBorderWall({ 
+                this.drawBorderWall({ 
                     position: {
                         x: xPos,
                         y: 0,
@@ -171,9 +160,7 @@ module.exports.Component = {
                         y: wallRotation.y + 90 - i * turn,
                         z: wallRotation.z
                     }
-                })) {
-                    return; 
-            }
+                })
             
             }
 
