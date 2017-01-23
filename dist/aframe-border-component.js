@@ -168,8 +168,6 @@ module.exports.Component = {
         }
         w.setAttribute('rotation', rotation);
         w.setAttribute('position', position);
-
-        return true;
     },
 
     update: function update() {
@@ -179,10 +177,6 @@ module.exports.Component = {
         var sides = this.data.sides,
             radius = this.data.radius;
 
-        var options = {};
-        if (this.borderData.openSpec) {
-            options.open = this.borderData.openSpec;
-        }
         var WALL_WIDTH = this.borderData.wallWidth,
             WALL_DEPTH = this.borderData.wallDepth,
             WALL_HEIGHT = this.borderData.wallHeight,
@@ -199,7 +193,7 @@ module.exports.Component = {
 
             if (!this.borderData.openList[i]) {
 
-                if (!this.drawBorderWall({
+                this.drawBorderWall({
                     position: {
                         x: xPos,
                         y: 0,
@@ -210,9 +204,7 @@ module.exports.Component = {
                         y: wallRotation.y + 90 - i * turn,
                         z: wallRotation.z
                     }
-                })) {
-                    return;
-                }
+                });
             }
         }
     },

@@ -160,11 +160,8 @@ module.exports.Component = {
                         y: wallRotation.y + 90 - i * turn,
                         z: wallRotation.z
                     }
-                })
-            
+                });  
             }
-
-
         }
     },
 
