@@ -31,8 +31,8 @@ A component for creating borders in VR
 
 Here are some live examples of the component. The simpler demo is ideal for mobile. 
 
-* https://mitchallen.github.io/border/index.html - best viewed in Chrome 
-* https://mitchallen.github.io/border/simple.html - simpler demo for mobile
+* https://mitchallen.bitbucket.io/border/index.html - best viewed in Chrome 
+* https://mitchallen.bitbucket.io/border/simple.html - simpler demo for mobile
 
 Demo notes:
 
@@ -283,6 +283,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.6
+
+* updated doc to point to demos in their new location on bitbucket
 
 #### Version 0.1.5
 
